@@ -127,3 +127,21 @@
     line-height: 18px;
     font-weight: 400;
 }
+
+.main__circle {
+    animation: uptodown 4s linear infinite;
+}
+
+@keyframes uptodown {
+    from {
+        transform: translateY(-10px);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+    
+    50% {
+        transform: translateY(10px);
+    }
+}

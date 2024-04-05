@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    function animateTitle(elem, timing = 0) {
+    function animateText(elem, timing = 0) {
         elem.style.opacity = 0;
 
         const keyframes = [
@@ -19,13 +19,31 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 2000
         }
 
-        elem.animate(keyframes, options).onfinish = (event) => {
+        elem.animate(keyframes, options).onfinish = () => {
             elem.style.opacity = 1;
         }
     }
 
+    function fadeOut(elem) {
+
+        const keyframes = [
+            {
+                opacity: 0,
+            },
+            {
+                opacity: 1,
+            }
+        ];
+
+        const options = {
+            duration: 2000
+        }
+
+        elem.animate(keyframes, options)
+    }
+
     const mainTitle = document.querySelector('.main__title');  //Заголовк на главном экране
-    animateTitle(mainTitle)
+    animateText(mainTitle)
 
     const mainDescr = document.querySelector('.main__descr'); //Подзагаловок на главном экране
     const arrayLettersMainDescr = mainDescr.textContent.trim().split('');
@@ -46,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const arrayLettersTag = document.querySelectorAll('.main__descr-letter');
     arrayLettersTag.forEach(letterTag => {
-        animateTitle(letterTag, 1800);
+        animateText(letterTag, 1800);
     });
 
     // Навигация
@@ -77,20 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
     circle.style.width = '13px';
     circle.style.height = '13px';
     circle.style.borderRadius = '100%';
+    circle.style.display = 'block';
     circle.style.backgroundColor = 'white';
-
-
-    
-
+    circle.classList = 'main__circle'
 
 
     const mainSection = document.querySelector('.main');
 
-    console.log(mainSection);
     mainSection.appendChild(scroll);
     scroll.appendChild(circle);
 
-
-
-
+    fadeOut(scroll)
+    fadeOut(document.querySelector('.header'))
 })
