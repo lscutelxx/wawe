@@ -1,0 +1,129 @@
+@import url(./font.css);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.text {
+    font-family: Roboto;
+    letter-spacing: .6px;
+    font-size: 24px;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.header__wrapper {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__logo {
+    position: absolute;
+    left: 0;
+}
+
+.header__logo-link {
+    text-decoration: none;
+}
+
+.headre__logo-link::before {
+    content: "W";
+    position: absolute;
+    font-family: Raleway;
+    font-size: 36px;
+    font-weight: 700;
+    left: 0;
+    bottom: 0;
+    transform: translate(-21%, 25%);
+    color: #fff;
+}
+
+.headre__logo-link::after {
+    content: "W";
+    position: absolute;
+    font-family: Raleway;
+    font-size: 36px;
+    font-weight: 700;
+    right: 0;
+    top: 0;
+    transform: translate(21%, -25%);
+    color: #fff;
+}
+
+.nav__list {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav__item {
+    margin-right: 45px;
+}
+
+.nav__item:last-child {
+    margin-right: 0;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 400;
+    position: relative;
+    display: block;
+}
+
+.nav__link:after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: #00B2A0;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: 0;
+    transition: 0.4s all;
+}
+
+.nav__link:hover::after {
+    width: 100%;
+}
+
+.nav__link--active:after {
+    width: 100%;
+}
+
+.main {
+    background: url("../img/bg/main_bg.png") center / cover no-repeat;
+    height: 100vh;
+    padding-top: 341px;
+}
+
+.main__text {
+    text-align: center;
+}
+
+.main__title {
+    font-family: Raleway;
+    font-size: 200px;
+    line-height: 145px;
+    font-weight: 700;
+    color: #0D302C;
+}
+.main__descr {
+    margin-top: 45px;
+    line-height: 18px;
+    font-weight: 400;
+}
