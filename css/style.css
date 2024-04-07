@@ -12,6 +12,25 @@
     font-size: 24px;
 }
 
+.title__middle {
+    font-family: Raleway;
+    font-size: 48px;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: #01353E;
+    position: relative;
+}
+
+.title__middle:after {
+    content: '/';
+    color: #00B2A0;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(20%);
+}
+
 .container {
     width: 1200px;
     margin: 0 auto;
@@ -130,6 +149,26 @@
 
 .main__circle {
     animation: uptodown 4s linear infinite;
+}
+
+.about {
+    max-height: 966px;
+    padding-top: 189px;
+    padding-bottom: 199px;
+}
+
+.about__wrapper {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 480px);
+    grid-template-rows: repeat(4, 90px);
+    grid-column-gap: 120px;
+    grid-row-gap: 30px;
+}
+
+.about__text {
+    font-weight: 300;
+    font-size: 14px;
 }
 
 @keyframes uptodown {

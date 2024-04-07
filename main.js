@@ -107,4 +107,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeOut(scroll)
     fadeOut(document.querySelector('.header'))
+
+
+    //Фнимация при скроле
+    function titleAnimationScroll() {
+        const arrayOftitle = document.querySelectorAll('.title__middle');
+
+        function showWhenScroll(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio == 1) {
+                    animateText(entry.target);
+                    console.log('hi')
+                }
+            })
+        };
+
+        const options = {
+            threshold: 1.0
+        };
+
+        const observer = new IntersectionObserver(showWhenScroll, options);
+
+        arrayOftitle.forEach(title => {
+            title.style.opacity = 0;
+            observer.observe(title);
+        })
+    }
+
+    titleAnimationScroll();
+
+
+    
+
+    
+    
+
 })
