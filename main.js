@@ -109,34 +109,40 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeOut(document.querySelector('.header'))
 
 
-    //Фнимация при скроле
-    function titleAnimationScroll() {
-        const arrayOftitle = document.querySelectorAll('.title__middle');
+    //Анимация при скроле
 
-        function showWhenScroll(entries) {
+    // Переделывание Intersection Observer для разового вызывания колбэка
+    const callbackIsCalled = new Map();
+
+    function observeElement(element) {
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio == 1) {
-                    animateText(entry.target);
-                    console.log('hi')
+                if (entry.isIntersecting && !callbackIsCalled.get(element)) {
+                    animateText(element);
+                    callbackIsCalled.set(element, true);
+                    console.log(callbackIsCalled);
+                    observer.disconnect();
                 }
             })
-        };
+        });
 
-        const options = {
-            threshold: 1.0
-        };
-
-        const observer = new IntersectionObserver(showWhenScroll, options);
-
-        arrayOftitle.forEach(title => {
-            title.style.opacity = 0;
-            observer.observe(title);
-        })
+        observer.observe(element);
     }
 
-    titleAnimationScroll();
+    const arrayOfTitle = document.querySelectorAll('.title__middle');
+    arrayOfTitle.forEach(title => {
+        callbackIsCalled.set(title, false);
+        observeElement(title);
+    })
 
 
+    //Волны
+    const receiveWaves = document.querySelectorAll('.receive__img');
+    let width = 200;
+    for (let i = 0; i < receiveWaves.length; i++) {
+        receiveWaves[i].style.width = `${width}px`;
+        width += 50
+    }
     
 
     
